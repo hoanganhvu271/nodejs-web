@@ -1,27 +1,21 @@
-const express = require('express')
+require('dotenv').config()
 const path = require('path')
+
+const express = require('express')
 const app = express()
-const port = 8080
+
+
+const configViewEngine = require('./config/viewEngine')
+const port = process.env.PORT || 8888
+const webRoutes = require('./routes/web')
 
 //config templates
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-
-// Thiết lập middleware để phục vụ các tệp tĩnh từ thư mục 'assets'
-app.use(express.static(path.join(__dirname, '../assets')));
+configViewEngine(app)
 
 
-
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.get('/abc', (req, res) => {
-    // res.send('<h1> Hello Hahaa </h1>')
-    res.render('sample.ejs')
-})
+//khai bao route
+// '/' is default prefix
+app.use('/', webRoutes)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
