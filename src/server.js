@@ -23,15 +23,6 @@ app.use('/', webRoutes)
 
 
 
-
-// connection.query(
-//     'select * from Users',
-//     function (err, results, fields) {
-//         console.log(results)
-
-//     }
-// )
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

@@ -68,3 +68,7 @@ button {
     background-color: #3498db;
     color: #fff;
 }
+
+.d-non {
+    display: none;
+}
