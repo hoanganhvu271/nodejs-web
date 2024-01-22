@@ -2,12 +2,20 @@ require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const app = express()
-
+const session = require('express-session')
 
 const configViewEngine = require('./config/viewEngine')
 const port = process.env.PORT || 8888
 const webRoutes = require('./routes/web')
+const loginRoutes = require('./routes/auth.route')
 const connection = require('./config/database')
+
+app.use(session({
+
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+}))
 
 
 //config req body
@@ -19,7 +27,12 @@ configViewEngine(app)
 
 
 //khai bao route, '/' is default prefix
+
+
 app.use('/', webRoutes)
+app.use('/', loginRoutes)
+//express-session
+
 
 
 

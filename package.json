@@ -13,10 +13,13 @@
   "author": "Vu",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "16.0.3",
     "ejs": "^3.1.9",
     "express": "4.18.2",
-    "mysql2": "2.3.3"
+    "express-session": "^1.17.3",
+    "mysql2": "2.3.3",
+    "nodemailer": "^6.9.8"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
